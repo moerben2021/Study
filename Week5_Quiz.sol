@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-3.0-only
-// This is a PoC to use the staking precompile wrapper as a Solidity developer.
 pragma solidity >=0.8.0;
 
 import "./StakingInterface.sol";
@@ -7,19 +5,17 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 
-contract DelegationDAO is AccessControl {
+contract QuizDAO is AccessControl {
 
     using SafeMath for uint256;
     
     // Role definition for contract members
     bytes32 public constant MEMBER = keccak256("MEMBER");
 
-    // Possible states for the DAO to be in:
-    // COLLECTING: the DAO is collecting funds before creating a delegation once the minimum delegation stake has been reached
-    // STAKING: the DAO has an active delegation
-    // REVOKING: the DAO has scheduled a delegation revoke
-    // REVOKED: the scheduled revoke has been executed
-    enum daoState{ COLLECTING, STAKING, REVOKING, REVOKED }
+    // COLLECTING: DAO正处于搜集玩家购买彩票过程中
+    // SELECTING: DAO正处于获胜者选择状态
+    // SENDED: 余额已发完
+    enum daoState{ COLLECTING, SELECTING, SENDED }
 
     // Current state that the DAO is in
     daoState public currentState; 
@@ -43,11 +39,10 @@ contract DelegationDAO is AccessControl {
     // The collator that this DAO is currently nominating
     address public target;
 
-    // Event for a member deposit
+    // 购买彩票
     event deposit(address indexed _from, uint _value);
-
-    // Event for a member withdrawal
-    event withdrawal(address indexed _from, address indexed _to, uint _value);
+    //赠送彩票
+    event send_to(address indexed _to, uint _value);
 
     // Initialize a new DelegationDao dedicated to delegating to the given collator target.
     constructor(address _target, address admin) {
