@@ -31,5 +31,5 @@ fn main() {                                         //主函
             println!("Failed to connect: {}", e);                   //打印连接异常信息
         }
     }
-    println!("Terminated.");
+    println!("Terminated.");                                        //结束客户端运行
 }
