@@ -9,6 +9,7 @@ example2:
 fn main() {
     let x = vec![1,2];
     let y = x;
+//    println!("y: {:?}",y);
     println!("y: {:?}",y);
 }
 
