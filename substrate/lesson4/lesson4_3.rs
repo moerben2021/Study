@@ -38,3 +38,33 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
+3
+fn main() {
+    let tweet = Tweet {
+        author: String::from("Kaichao"),
+        text: String::from("hello world"),
+    };
+    
+    notify( &tweet );
+}
+
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+struct Tweet {
+    author: String,
+    text: String,
+}
+
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        return format!("{}, {}", self.author, self.text);
+    }
+}
+
+pub fn notify<T: Summary>(item: &T) {
+    println!("{}", item.summarize());
+}
+
+
