@@ -4,23 +4,33 @@ enum TrafficLight{
     Yellow,
 }
 
-fn timeInLight(light: TrafficLight) -> u8 {
-    match light {
-        TrafficLight::Red => 30,
-        TrafficLight::Green => 60,
-        TrafficLight::Yellow => 10,
+pub trait TrafficTime {
+    fn time(&self) -> u8;
+}
+
+impl TrafficTime for TrafficLight {
+    fn time(&self) -> u8 {
+        match &self {
+            TrafficLight::Red => 30,
+            TrafficLight::Green => 60,
+            TrafficLight::Yellow => 10,
+        }
     }
 }
+
+pub fn notify<T: TrafficTime>(item: &T){
+    println!("{}", item.time());
+}
+    
+
 fn main() {
     let light1 = TrafficLight::Red;
-    let time1 = timeInLight( light1 );
-    println!("time is: {}", time1);
+    notify(&light1);
     
     let light2 = TrafficLight::Green;
-    let time2 = timeInLight( light2 );
-    println!("time is: {}", time2);
+    notify(&light2);
     
     let light3 = TrafficLight::Yellow;
-    let time3 = timeInLight( light3 );
-    println!("time is: {}", time3);
+    notify(&light3);
+    
 }
