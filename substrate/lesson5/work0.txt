@@ -1,2 +1,17 @@
 宏：storage，call, event，error，hooks, construct_runtime.
 存储数据结构：StorageValue, StorageMap, StorageDoubleMap，StorageNMap
+
+
+
+git clone -b V3.0.0 --depth 1 https://github.com/substrate-developer-hub/substrate-node-template
+
+git status 
+
+
+cargo remote -r root@srv22105.dus4.fastwebserver.de -- build --release
+
+cargo build --release
+
+
+./target/release/node-template  --dev --tmp
+
