@@ -1,6 +1,10 @@
 宏：storage，call, event，error，hooks, construct_runtime.
 存储数据结构：StorageValue, StorageMap, StorageDoubleMap，StorageNMap
 
+https://github.com/moerben2021/Study/tree/main/substrate/lesson5/work5
+编译未成功，未解决，cargo build --release
+error: failed to download `parity-db v0.2.2`
+
 
 
 git clone -b V3.0.0 --depth 1 https://github.com/substrate-developer-hub/substrate-node-template
