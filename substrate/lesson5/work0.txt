@@ -1,0 +1,2 @@
+宏：storage，call, event，error，hooks, construct_runtime.
+存储数据结构：StorageValue, StorageMap, StorageDoubleMap，StorageNMap
